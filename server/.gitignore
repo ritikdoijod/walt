@@ -1,0 +1,9 @@
+# node modules
+/node_modules
+
+# environment
+.env
+.env.development
+.env.local
+.env.test
+.env.production
