@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "node server.js | npx pino-pretty"
+    "dev": "node --env-file=.env.development --watch server.js | npx pino-pretty"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
