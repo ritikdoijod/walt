@@ -1,4 +1,5 @@
 import express from "express";
+import { sql } from "./configs/db.js";
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/transactions", async (req, res) => {
   try {
-    const { title, amount, category, user_id } = req.body();
+    const { title, amount, category, user_id } = req.body;
 
     if (!title || !user_id || !amount || !category)
       return res.status(400).json({ message: "All fields are required" });
@@ -25,6 +26,7 @@ app.post("/api/transactions", async (req, res) => {
 
     res.status(201).json(transaction[0]);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
