@@ -1,15 +1,19 @@
 {
+  "name": "server",
   "type": "module",
   "scripts": {
-    "dev": "node --env-file=.env.development --watch server.js | npx pino-pretty"
+    "dev": "node --env-file=.env --watch src/index.js | npx pino-pretty",
+    "start": "node dist/index.js"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.1",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "@hono/node-server": "^1.14.4",
+    "@prisma/client": "^6.10.1",
+    "graphql": "^16.11.0",
+    "hono": "^4.8.3",
     "pino": "^9.7.0"
   },
   "devDependencies": {
-    "pino-pretty": "^13.0.0"
+    "pino-pretty": "^13.0.0",
+    "prisma": "^6.10.1"
   }
 }
