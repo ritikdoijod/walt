@@ -1,23 +1,29 @@
-import { serve } from '@hono/node-server'
-import { graphql, GraphQLObjectType, GraphQLSchema } from 'graphql'
-import { Hono } from 'hono'
-import { queries } from './transaction.js'
-import logger from './configs/logger.js'
+import { serve } from "@hono/node-server";
+import { graphql, GraphQLObjectType, GraphQLSchema } from "graphql";
+import { Hono } from "hono";
+import { mutations, queries } from "./transaction.js";
+import logger from "./configs/logger.js";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/', async (c) => {
-  return c.text('Hello Hono!')
-})
+app.get("/", async (c) => {
+  return c.text("Hello Hono!");
+});
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
-    name: 'Query',
+    name: "Query",
     fields: {
-      ...queries
-    }
-  })
-})
+      ...queries,
+    },
+  }),
+  mutation: new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+      ...mutations,
+    },
+  }),
+});
 
 app.post("/graphql", async (c) => {
   try {
@@ -26,17 +32,20 @@ app.post("/graphql", async (c) => {
     const result = await graphql({
       schema,
       source: query,
-    })
+    });
 
-    return c.json(result)
+    return c.json(result);
   } catch (error) {
-    return c.json({ errors: [{ message: error.message }] })
+    return c.json({ errors: [{ message: error.message }] });
   }
-})
+});
 
-serve({
-  fetch: app.fetch,
-  port: 3000
-}, (info) => {
-  logger.info(`Server is running on http://localhost:${info.port}`)
-})
+serve(
+  {
+    fetch: app.fetch,
+    port: 3000,
+  },
+  (info) => {
+    logger.info(`Server is running on http://localhost:${info.port}`);
+  }
+);
