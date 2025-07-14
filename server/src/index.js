@@ -3,6 +3,7 @@ import { graphql, GraphQLObjectType, GraphQLSchema } from "graphql";
 import { Hono } from "hono";
 import { mutations, queries } from "./transaction.js";
 import logger from "./configs/logger.js";
+import { auth } from "./auth.js";
 
 const app = new Hono();
 
@@ -24,6 +25,8 @@ const schema = new GraphQLSchema({
     },
   }),
 });
+
+app.use("/graphql", auth);
 
 app.post("/graphql", async (c) => {
   try {

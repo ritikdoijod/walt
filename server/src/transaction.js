@@ -33,9 +33,11 @@ const Transaction = new GraphQLObjectType({
 export const queries = {
   getTransactions: {
     type: new GraphQLList(Transaction),
-    resolve: async () => {
+    resolve: async (parent, args, context, info) => {
       try {
-        return await db.transactions.findMany();
+        return await db.transactions.findMany({
+          where: { user_id: context.userId }
+        });
       } catch (error) {
         logger.error(error);
         throw new Error("Failed to fetch transactions");
@@ -43,6 +45,20 @@ export const queries = {
     },
   },
   getTransaction: {
+    type: Transaction,
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLInt) },
+    },
+    resolve: async (_, { id }) => {
+      try {
+        return await db.transactions.findUnique({ where: { id } });
+      } catch (error) {
+        logger.error(error);
+        throw new Error("Failed to fetch transactions");
+      }
+    },
+  },
+  getSummary: {
     type: Transaction,
     args: {
       id: { type: new GraphQLNonNull(GraphQLInt) },
@@ -73,6 +89,37 @@ export const mutations = {
       } catch (error) {
         logger.error(error);
         throw new Error("Failed to create transaction");
+      }
+    },
+  },
+  updateTransaction: {
+    type: Transaction,
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLString) },
+      title: { type: GraphQLString },
+      amount: { type: new GraphQLNonNull(GraphQLFloat) },
+      category: { type: GraphQLString },
+    },
+    resolve: async (_, args) => {
+      try {
+        return await db.transactions.update({});
+      } catch (error) {
+        logger.error(error);
+        throw new Error("Failed to delete transaction");
+      }
+    },
+  },
+  deleteTransaction: {
+    type: Transaction,
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLString) },
+    },
+    resolve: async (_, args) => {
+      try {
+        return await db.transactions.delete({ data: args });
+      } catch (error) {
+        logger.error(error);
+        throw new Error("Failed to delete transaction");
       }
     },
   },
