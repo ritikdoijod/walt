@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "pretty": "npx prettier . --write"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

@@ -2,8 +2,8 @@
   "name": "server",
   "type": "module",
   "scripts": {
-    "dev": "node --env-file=.env --watch src/index.js | npx pino-pretty",
-    "start": "node dist/index.js"
+    "dev": "node --env-file=.env --watch src/server.js | npx pino-pretty",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@clerk/backend": "^2.4.1",
@@ -16,5 +16,8 @@
   "devDependencies": {
     "pino-pretty": "^13.0.0",
     "prisma": "^6.10.1"
+  },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma"
   }
 }

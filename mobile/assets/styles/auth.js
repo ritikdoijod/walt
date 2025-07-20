@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { colors } from "./colors";
 
 export const styles = StyleSheet.create({
@@ -7,6 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: 20,
     justifyContent: "center",
+    gap: 50,
   },
   illustration: {
     width: 300,
@@ -21,27 +23,21 @@ export const styles = StyleSheet.create({
     marginVertical: 15,
     textAlign: "center",
   },
-  input: {
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 12,
-    marginBottom: 15,
-    borderColor: colors.border,
-    fontSize: 16,
-    backgroundColor: colors.white,
-    color: colors.text,
-  },
-  errorInput: {},
   button: {
     marginTop: 10,
     marginBottom: 20,
     padding: 16,
     borderRadius: 12,
-    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+    borderWidth: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 15,
   },
   buttonText: {
-    color: colors.white,
-    fontSize: 15,
+    color: colors.primary,
+    fontSize: 18,
     fontWeight: "600",
     textAlign: "center",
   },
@@ -65,14 +61,14 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: 20,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   verificationTitle: {
     fontSize: 24,
     fontWeight: "bold",
     color: colors.text,
     marginBottom: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   verificationInput: {
     backgroundColor: colors.white,
@@ -85,7 +81,7 @@ export const styles = StyleSheet.create({
     color: colors.text,
     width: "100%",
     textAlign: "center",
-    letterSpacing: 2
+    letterSpacing: 2,
   },
 
   errorBox: {
@@ -97,12 +93,12 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     flexDirection: "row",
     alignItems: "center",
-    width: "100%"
+    width: "100%",
   },
   errorText: {
     color: colors.text,
     marginLeft: 8,
     flex: 1,
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 });

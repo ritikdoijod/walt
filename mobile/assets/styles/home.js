@@ -1,40 +1,34 @@
 import { StyleSheet } from "react-native";
+
 import { colors } from "./colors";
-import { HeaderTitle } from "@react-navigation/elements";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
   },
-  content: {
-    padding: 20,
-    paddingBottom: 0
-  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20,
-    paddingHorizontal: 0,
-    paddingVertical: 12
+    padding: 20,
   },
   headerLeft: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   headerLogo: {
     width: 75,
-    height: 75
+    height: 75,
   },
   welcomeContainer: {
-    flex: 1
+    flex: 1,
   },
   welcomeText: {
     fontSize: 14,
     color: colors.textLight,
-    marginBottom: 2
+    marginBottom: 2,
   },
   usernameText: {
     fontSize: 16,
@@ -44,12 +38,12 @@ export const styles = StyleSheet.create({
   headerRight: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12
+    gap: 12,
   },
   headerTitle: {
     fontSize: 28,
     fontWeight: "bold",
-    color: colors.text
+    color: colors.text,
   },
   addButton: {
     backgroundColor: colors.primary,
@@ -62,12 +56,12 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3
+    elevation: 1,
   },
   addButtonText: {
     color: colors.white,
     fontWeight: "600",
-    marginLeft: 4
+    marginLeft: 4,
   },
   logoutButton: {
     padding: 10,
@@ -75,8 +69,189 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.card,
     shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 1 },
-    shadowOffset: 0.05,
+    shadowOpacity: 0.05,
     shadowRadius: 2,
-    elevation: 1
-  }
+    elevation: 1,
+  },
+  content: {
+    flex: 1,
+    padding: 20,
+  },
+  balanceCard: {
+    backgroundColor: colors.card,
+    padding: 20,
+    borderRadius: 20,
+    shadowColor: colors.shadow,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  balanceTitle: {
+    fontSize: 16,
+    color: colors.textLight,
+    marginBottom: 8,
+  },
+  balanceAmount: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: colors.text,
+    marginBottom: 20,
+  },
+  balanceStats: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  balanceStatItem: {
+    flex: 1,
+    alignItems: "center",
+  },
+  statDivider: {
+    width: 1,
+    backgroundColor: colors.border,
+  },
+  balanceStatLabel: {
+    fontSize: 14,
+    color: colors.textLight,
+    marginBottom: 4,
+  },
+  balanceStatAmount: {
+    fontSize: 18,
+    fontWeight: "600",
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: colors.text,
+    marginBottom: 15,
+  },
+  transactionCard: {
+    backgroundColor: colors.card,
+    borderRadius: 12,
+    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    shadowColor: colors.shadow,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  transactionContent: {
+    flex: 1,
+    flexDirection: "row",
+    padding: 15,
+    alignItems: "center",
+  },
+  categoryIconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.gray,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+  transactionLeft: {
+    flex: 1,
+  },
+  transactionTitle: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: colors.text,
+    marginBottom: 4,
+  },
+  transactionCategory: {
+    fontSize: 14,
+    color: colors.textLight,
+  },
+  transactionRight: {
+    alignItems: "flex-end",
+  },
+  transactionAmount: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
+  transactionDate: {
+    fontSize: 12,
+    color: colors.textLight,
+  },
+  deleteButton: {
+    padding: 15,
+    borderLeftWidth: 1,
+    borderLeftColor: colors.border,
+  },
+  transactionsContainer: {
+    marginBottom: 20,
+  },
+  emptyState: {
+    backgroundColor: colors.card,
+    borderRadius: 16,
+    padding: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    shadowColor: colors.shadow,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  emptyStateIcon: {
+    marginBottom: 16,
+  },
+  emptyStateTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: colors.text,
+    marginBottom: 8,
+  },
+  emptyStateText: {
+    color: colors.textLight,
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 20,
+    lineHeight: 20,
+  },
+  emptyStateButton: {
+    backgroundColor: colors.primary,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  emptyStateButtonText: {
+    color: colors.white,
+    fontWeight: "600",
+    marginLeft: 6,
+  },
+  transactionsHeaderContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+    paddingBottom: 5,
+  },
+  transactionsList: {},
+  transactionsListContainer: {
+    flex: 1,
+    marginVertical: 20,
+  },
+  transactionsListContent: {},
 });

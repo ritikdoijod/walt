@@ -1,7 +1,8 @@
-import { config } from "./config";
 import { useAuth } from "@clerk/clerk-expo";
 
-export function useGQLClient(gql) {
+import { config } from "./config";
+
+export function useGQLClient() {
   const { getToken } = useAuth();
 
   const client = async (gql) => {
@@ -16,8 +17,11 @@ export function useGQLClient(gql) {
       body: JSON.stringify(gql),
     });
 
+    if (!response.ok)
+      throw new Error((await response.text()) || "Something went wrong");
+
     const { data, errors } = await response.json();
-    
+
     if (errors) {
       throw new Error(data.errors?.[0]?.message || "Something went wrong");
     }

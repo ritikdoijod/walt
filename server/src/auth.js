@@ -1,21 +1,28 @@
-import { verifyToken } from "@clerk/backend";
+import { createClerkClient } from "@clerk/backend";
 import { HTTPException } from "hono/http-exception";
+import { config } from "./configs/app.js";
 
 export const auth = async (c, next) => {
-  const authHeader = c.req.header("Authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
-    throw new HTTPException(401, { message: "Missing token" });
-  }
+  const clerkClient = createClerkClient({
+    secretKey: config.CLERK_SECRET_KEY,
+    publishableKey: config.CLERK_PUBLISHABLE_KEY,
+  });
 
-  const token = authHeader.split(" ")[1];
+  const req = c.req.raw;
 
   try {
-    const payload = await verifyToken(token);
-    const userId = payload.sub;
+    const { isAuthenticated, userId } = (
+      await clerkClient.authenticateRequest(req)
+    ).toAuth();
 
-    c.set("userId", userId); // Pass to GraphQL resolvers
+    if (!isAuthenticated) {
+      throw new HTTPException(401, { message: "Unauthorized" });
+    }
+
+    c.userId = userId;
+
     await next();
   } catch (e) {
-    throw new HTTPException(401, { message: "Invalid token" });
+    throw new HTTPException(401, { message: "Unauthorized" });
   }
 };

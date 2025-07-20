@@ -1,0 +1,11 @@
+# Ignore artifacts:
+build
+coverage
+node_modules
+
+
+mobile/.expo
+mobile/.vscode
+mobile/node_modules
+
+server/node_modules

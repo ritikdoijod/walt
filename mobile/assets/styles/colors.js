@@ -9,6 +9,7 @@ const coffee = {
   income: "#2ECC71",
   card: "#FFFFFF",
   shadow: "#000000",
+  gray: "#F5F5F5",
 };
 
 export const themes = {
