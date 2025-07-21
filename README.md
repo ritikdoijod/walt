@@ -12,9 +12,9 @@ Walt is a personal finance management app with a mobile frontend (React Native/E
 ## Screenshots
 
 <div align="center">
-  <img src="media/auth.jpeg" alt="Home" width="200" style="border-radius:16px;"/>
-  <img src="media/home.jpeg" alt="Transactions" width="200" style="border-radius:16px;"/>
-  <img src="media/create.jpeg" alt="Create Transaction" width="200" style="border-radius:16px;"/>
+  <img src="media/auth.jpeg" alt="Home" width="200" "/>
+  <img src="media/home.jpeg" alt="Transactions" width="200" "/>
+  <img src="media/create.jpeg" alt="Create Transaction" width="200" "/>
 </div>
 
 ## Technologies
