@@ -9,7 +9,7 @@ import { useGQLClient } from "../gql";
 import { formatDate } from "../utils";
 
 const CATEGORY_ICONS = {
-  "Food & Drinks": "fast-bood",
+  "Food & Drinks": "fast-food",
   Shopping: "cart",
   Transportation: "car",
   Entertainment: "film",
